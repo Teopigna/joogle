@@ -4,24 +4,24 @@ import { AuthComponent } from './auth/auth.component';
 import { PageBodyComponent } from './page-body/page-body.component';
 import { ItemDetailComponent } from './item-detail/item-detail.component';
 
-import { RouterModule, Routes } from "@angular/router";
+import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 const appRoutes: Routes = [
-    {path: '', component: PageBodyComponent,
-        children: [
-            {path: '', component: ItemStartComponent},
-            {path: 'new', component: ItemDetailComponent},
-            {path: ':index/edit', component: ItemDetailComponent}
-        ]
-    },
-    {path: 'auth', component: AuthComponent},
+  {
+    path: '',
+    component: PageBodyComponent,
+    children: [
+      { path: '', component: ItemStartComponent },
+      { path: 'new', component: ItemDetailComponent },
+      { path: 'edit/:index', component: ItemDetailComponent },
+    ],
+  },
+  { path: 'auth', component: AuthComponent },
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(appRoutes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forRoot(appRoutes)],
+  exports: [RouterModule],
 })
-export class AppRoutingModule {
-
-}
+export class AppRoutingModule {}

@@ -1,50 +1,57 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Params } from '@angular/router';
+import { SitesService } from '../services/sites.service';
+import { Site } from '../shared/site.model';
 
 @Component({
   selector: 'app-item-detail',
   templateUrl: './item-detail.component.html',
-  styleUrls: ['./item-detail.component.css']
+  styleUrls: ['./item-detail.component.css'],
 })
 export class ItemDetailComponent implements OnInit {
-
-  
   editMode: boolean = false;
+  index?: number;
+  site?: Site;
 
   // Inizializza il form
   detailForm: FormGroup = new FormGroup({
-    'title': new FormControl('', Validators.required),
-    'description': new FormControl('', Validators.required),
-    'url': new FormControl('', Validators.required),
-    'keys': new FormControl('', Validators.required)
-  });;
+    title: new FormControl('', Validators.required),
+    description: new FormControl('', Validators.required),
+    url: new FormControl('', Validators.required),
+    keys: new FormControl('', Validators.required),
+  });
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private siteService: SitesService
+  ) {}
 
   ngOnInit(): void {
-    //this.initForm();
-  }
-
-  initForm(){
-    let title = '';
-    let description = '';
-    let url = '';
-    let keys = '';
-
-    this.detailForm = new FormGroup({
-      'title': new FormControl(title, Validators.required),
-      'description': new FormControl(description, Validators.required),
-      'url': new FormControl(url, Validators.required),
-      'keys': new FormControl(keys, Validators.required)
+    this.route.params.subscribe((params: Params) => {
+      this.index = +params['index'];
+      this.site = this.siteService.getSite(this.index);
+      this.initForm();
     });
   }
 
-  onSubmit(){
+  initForm() {
+    let title = this.site?.title;
+    let description = this.site?.description;
+    let url = this.site?.url;
+    let keys = this.site?.keys;
 
+    this.detailForm = new FormGroup({
+      title: new FormControl(title, Validators.required),
+      description: new FormControl(description, Validators.required),
+      url: new FormControl(url, Validators.required),
+      keys: new FormControl(keys, Validators.required),
+    });
   }
 
-  onCancel(){
+  onSubmit() {}
 
-  }
+  //con il tasto cancel lo reindirizzo alla pagina precedente
 
+  onCancel() {}
 }
