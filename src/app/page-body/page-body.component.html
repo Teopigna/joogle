@@ -1,0 +1,10 @@
+<div class="row">
+    <div class="col-1">
+    </div>
+    <div class="col-3">
+      <app-item-list></app-item-list>
+    </div>
+    <div class="col-7" *ngIf="isAdmin">
+        <router-outlet></router-outlet>
+    </div>
+</div>

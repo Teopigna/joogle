@@ -1,0 +1,11 @@
+
+<div class="row">
+    <div class="col-xs-12">
+        <app-item 
+            *ngFor="let item of sites; let i = index"
+            [site]="item"
+            [index]="i">
+        </app-item>
+    </div>
+    <button class="btn btn-success" (click)="get()">Test get sites list</button>
+</div>
