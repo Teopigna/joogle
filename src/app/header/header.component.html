@@ -2,17 +2,20 @@
     <div class="container-fluid">
         <a class="navbar-brand" >Joogle</a>
         <div class="collapse navbar-collapse" *ngIf="!isLogin" >
-            <app-search-bar></app-search-bar>
+          <app-search-bar></app-search-bar>
         </div>
         <span class="navbar-text" >
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item" routerLinkActive="active" *ngIf="isLogin">
-                  <a class="nav-link" routerLink=""  (click)="setState()">Home</a>
-                </li>
-                <li class="nav-item" routerLinkActive="active" *ngIf="!isLogin">
-                  <a class="nav-link" routerLink="auth"  (click)="setState()">Login</a>
-                </li>
-              </ul>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
+            <li class="nav-item" routerLinkActive="active" *ngIf="isLogin && !isAdmin">
+              <a class="nav-link" routerLink=""  (click)="setState()">Home</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active" *ngIf="!isLogin && !isAdmin">
+              <a class="nav-link" routerLink="auth"  (click)="setState()">Login</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active" *ngIf="isAdmin">
+              <a class="nav-link" routerLink="" (click)="onLogout()">Logout</a>
+            </li>
+          </ul>
         </span>
     </div>
   </nav>
