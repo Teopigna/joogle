@@ -4,17 +4,16 @@
     <div class="col-4">
         <h3 style="text-align: center;">Welcome to Joogle</h3>
         <hr>
-        <form #authForm="ngForm">
+        <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
             <div class="form-group">
-                <label for="email">E-mail</label>
+                <label for="email">User</label>
                 <input 
                     type="email" 
                     id="email" 
                     class="form-control" 
                     ngModel 
                     name="email"
-                    required
-                    email>
+                    required>
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
@@ -28,15 +27,16 @@
                     password
                     minlength="6">
             </div>
+            <hr>
+            <div class="row">
+                <div class="col-5">
+                </div>
+                <div class="col-3">
+                    <button type="submit" class="btn btn-success" [disabled]="!authForm.valid" >Login</button>
+                </div>
+                
+            </div>
         </form>
-        <hr>
-        <div class="row">
-            <div class="col-5">
-            </div>
-            <div class="col-3">
-                <button class="btn btn-success">Login</button>
-            </div>
-            
-        </div>
+        
     </div>
 </div>
