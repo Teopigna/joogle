@@ -34,32 +34,9 @@ export class DataStorageService {
     }
 
     search(research: string){
-
-        const words = research.split(' ');
-
-        let query = '';
-        if(words.length > 1){
-            for(let word of words){
-                const i = words.indexOf(word);
-                
-                if(i === (words.length-1)){
-                    query += word
-                }
-                else{
-                    query += word +" "
-                }
-            }
-        }
-        else{
-            query = words[0];
-            if(query === "" || query === " ")
-                return;
-        }
-
-        console.log(query);
         
         return this.http.get(
-            "http://localhost:3000/ricerca?_page=1&_limit=2&q="+query
+            "http://localhost:3000/ricerca?_page=1&_limit=2&q="+research
         ).pipe(
             map((res:any) => {
                 return res.map( (site:any) => {

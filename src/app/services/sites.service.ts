@@ -16,7 +16,7 @@ export class SitesService {
   }
 
   getSites() {
-    console.log(this.sites);
+    //console.log(this.sites);
     return this.sites.slice();
   }
 
