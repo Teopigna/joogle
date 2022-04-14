@@ -6,9 +6,9 @@ export class User {
     ) {}
         
     get token(){  //user.token == similar to property
-        // if(!this._tokenExpirationDate || new Date() > this._tokenExpirationDate) {
-        //     return null;
-        // }
+        if(!this._tokenExpirationDate ) { //|| new Date() > this._tokenExpirationDate
+            return null;
+        }
         return this._token;
     }
 }

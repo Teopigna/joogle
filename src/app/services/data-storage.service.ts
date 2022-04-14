@@ -1,7 +1,7 @@
 import { SitesService } from './sites.service';
 import { Site } from './../shared/site.model';
 import { AuthService } from './auth.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { map, tap } from 'rxjs/operators';
@@ -49,5 +49,19 @@ export class DataStorageService {
             })
         ).subscribe();
 
+    }
+    
+    deleteData(id:number[]){
+
+        let token: string | null= this.authService.user.getValue()!.token;
+
+        if(token == null){
+            return;
+        }
+        
+        return this.http.delete(
+            "http://localhost:3000/eliminaRisultati?id="+id[0],  //per id multipli ?id=1&id=2&id=3
+            {headers: new HttpHeaders({'authorization' : "Bearer "+token})}
+        );
     }
 }
