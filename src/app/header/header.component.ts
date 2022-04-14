@@ -15,13 +15,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
   userSub?: Subscription;
 
   constructor(private authService: AuthService) { }
-
+  
   ngOnInit(): void {
     //Si iscrive alla Subject user nell'authService, che sarà null in caso in cui non si sia fatto il login come Admin
     this.userSub = this.authService.user.subscribe(user => {
       this.isAdmin = !!user;
       this.isLogin = false;
-      
     })
   }
   

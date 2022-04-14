@@ -3,15 +3,8 @@ import { HttpClient } from '@angular/common/http';
 
 import { Injectable } from "@angular/core";
 
-import {tap} from "rxjs/operators"
+import {tap, map} from "rxjs/operators"
 import { BehaviorSubject } from 'rxjs';
-
-export interface AuthResponseData {
-    token: string;
-    tokenExpiresIn: string;
-    refreshToken: string;
-    refreshTokenExpiresIn: string;
-}
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
@@ -22,18 +15,45 @@ export class AuthService {
     constructor(private http: HttpClient){}
 
     login(email: string, password: string){
-        //console.log('loggin in');
-        return this.http.post<AuthResponseData>(
+        
+        return this.http.post(
             "http://localhost:3000/auth/login",
             {
                 user: email,
                 password: password
             }
         ).pipe(
-            tap(resData => {
-                this.handleLogin(resData.token, +resData.tokenExpiresIn, resData.refreshToken, +resData.refreshTokenExpiresIn)
+            map( (resData:any) => {
+                    return {...resData}
+            }),
+            tap( (resData:any) => {
+                console.log(resData);
+                this.handleLogin(resData.access_token, +resData.tokenExpireIn, resData.refreshToken, +resData.refreshTokenExpireIn)
             })
         );
+    }
+
+    autoLogin() {
+        const userData: {
+            id : string;
+            _token: string;
+            _tokenExpirationDate : string;
+            
+        } = JSON.parse(localStorage.getItem('user') || '{}');
+
+        if(!userData){
+            return;
+        }
+
+        const loadedUser = new User(userData.id, userData._token, +userData._tokenExpirationDate);
+
+        console.log(loadedUser);
+
+        if(loadedUser.token) {
+            
+            this.user.next(loadedUser);
+        }
+
     }
 
     logout() {
@@ -42,13 +62,14 @@ export class AuthService {
 
     // Salva i dati dell'utente loggato in un oggetto User
     handleLogin(tk: string, tkExpire: number, refreshTk: string, refreshExpire: number){
-        const expirationDate = new Date(new Date().getTime() + tkExpire * 1000);
+        
         const user = new User(
             "user",
             tk,
-            expirationDate
+            tkExpire
         );
         this.user.next(user);
+        localStorage.setItem('user', JSON.stringify(user));
     }
 
 }

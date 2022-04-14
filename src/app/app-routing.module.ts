@@ -1,3 +1,4 @@
+import { AuthGuard } from './auth/auth.guard';
 import { ItemStartComponent } from './item-start/item-start.component';
 import { AuthComponent } from './auth/auth.component';
 
@@ -8,16 +9,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 const appRoutes: Routes = [
-  {
-    path: '',
-    component: PageBodyComponent,
-    children: [
-      { path: '', component: ItemStartComponent },
-      { path: 'new', component: ItemDetailComponent },
-      { path: 'edit/:index', component: ItemDetailComponent },
-    ],
-  },
-  { path: 'auth', component: AuthComponent },
+    {path: '', component: PageBodyComponent,
+        children: [
+            {path: '', component: ItemStartComponent},
+            {path: 'new', component: ItemDetailComponent, canActivate:[AuthGuard]},
+            {path: 'edit/:index', component: ItemDetailComponent, canActivate:[AuthGuard]}
+        ]
+    },
+    {path: 'auth', component: AuthComponent},
 ];
 
 @NgModule({

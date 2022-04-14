@@ -4,21 +4,21 @@
       "title": "Gino", 
       "id": 0, 
       "description": "C'è poco da dire, ma molto da fare...lavorare lavorare lavorare, preferisco il rumore del mare",
-      "keys": "Gino Dire",
+      "keys": "gino dire",
       "url": "https://managehosting.aruba.it/cart/v2/it/SelezioneDomini/875E4B99-2685-4D44-AFC5-065D87A9D038"
     },
     {
       "title": "Home Aubay. - Aubay |", 
       "id": 1, 
       "description": "Activity areas. Aubay lavora solo con i principali attori di mercato ed è particolarmente presente in quello bancario e assicurativo. Aubay lavora ...",
-      "keys": "consulenza,it, angular",
+      "keys": "consulenza it angular",
       "url": "https://www.aubay.it"
     },
     {
       "title": "TypeScript: Typed JavaScript at Any Scale.", 
       "id": 2, 
       "description": "JavaScript and More ... TypeScript is an open-source language which builds on JavaScript, one of the world's most used tools, by adding static type definitions.",
-      "keys": "language,developing",
+      "keys": "language developing",
       "url": "https://angular.io/"
     },
     {
@@ -27,6 +27,20 @@
       "description": "Lo erano, lo erano",
       "keys": "language,developing",
       "url": "https://timi.it/"
+    },
+    {
+      "title": "Amazon.it", 
+      "id": 4, 
+      "description": "Prezzi bassi su milioni di articoli. Spedizione gratis (vedi condizioni).",
+      "keys": "shopping amazon ",
+      "url": "https://www.amazon.it"
+    },
+    {
+      "title": "Ebay.it", 
+      "id": 5, 
+      "description": "Prezzi bassi su milioni di articoli. Spedizione gratis (vedi condizioni).",
+      "keys": "shopping ebay ",
+      "url": "https://www.ebay.it"
     }
   ]
 }
