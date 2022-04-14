@@ -14,6 +14,13 @@ export class SitesService {
     // Avvisa tutti i componenti subscribed a sitesChanged che i siti sono cambiati
     this.sitesChanged.next(this.sites.slice());
   }
+  
+  removeSite(ind: number){
+    console.log(this.sites);
+    this.sites = this.sites.splice(ind, 1);
+    console.log(this.sites);
+    this.sitesChanged.next(this.sites.slice());
+  }
 
   getSites() {
     //console.log(this.sites);

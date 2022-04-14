@@ -1,10 +1,10 @@
 import { User } from './../shared/user.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 import { Injectable } from "@angular/core";
 
-import {tap, map} from "rxjs/operators"
-import { BehaviorSubject } from 'rxjs';
+import {tap, map, catchError} from "rxjs/operators"
+import { BehaviorSubject, throwError } from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
@@ -24,10 +24,11 @@ export class AuthService {
             }
         ).pipe(
             map( (resData:any) => {
-                    return {...resData}
+                //console.log(resData);
+                return {...resData};
             }),
             tap( (resData:any) => {
-                console.log(resData);
+                //console.log(resData);
                 this.handleLogin(resData.access_token, +resData.tokenExpireIn, resData.refreshToken, +resData.refreshTokenExpireIn)
             })
         );
@@ -58,6 +59,7 @@ export class AuthService {
 
     logout() {
         this.user.next(null);
+        localStorage.removeItem('user');
     }
 
     // Salva i dati dell'utente loggato in un oggetto User
@@ -70,6 +72,20 @@ export class AuthService {
         );
         this.user.next(user);
         localStorage.setItem('user', JSON.stringify(user));
+    }
+
+    handleError(errorRes: HttpErrorResponse){
+        let errorMessage = 'An unknown error occurred!';
+        if(!errorRes.error || !errorRes.error.error){
+            return new Error(errorMessage);
+        }
+        switch(errorRes.error.error.message) {
+            case '401':
+                errorMessage = "Wrong user or password"
+        }
+
+        return throwError(errorMessage);
+        
     }
 
 }

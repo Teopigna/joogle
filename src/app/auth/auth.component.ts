@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 })
 export class AuthComponent implements OnInit , OnDestroy{
 
+  errorMessage: string | null = null;
+
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
@@ -30,9 +32,16 @@ export class AuthComponent implements OnInit , OnDestroy{
 
     authObs = this.authService.login(email, password);
     
-    authObs.subscribe(responseData => {
-      this.router.navigate(['']);
-    });
+    authObs.subscribe(
+      responseData => {
+        this.errorMessage = null;
+        this.router.navigate(['']);
+      },
+      error => {
+        this.errorMessage = error.error.message;
+      }
+    
+    );
 
     form.reset();
   }

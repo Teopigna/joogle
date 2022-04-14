@@ -1,3 +1,5 @@
+import { SitesService } from './../services/sites.service';
+import { DataStorageService } from './../services/data-storage.service';
 import { Subscription } from 'rxjs';
 import { AuthService } from './../services/auth.service';
 import { Site } from './../shared/site.model';
@@ -18,7 +20,7 @@ export class ItemComponent implements OnInit, OnDestroy {
   
   @Input() index?: number;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private dataStorageService: DataStorageService, private siteService: SitesService) { }
 
   ngOnInit(): void {
     this.userSub = this.authService.user.subscribe(user => {
@@ -28,5 +30,14 @@ export class ItemComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.userSub?.unsubscribe()
+  }
+
+  onDelete(id: number[] ) {
+    this.dataStorageService.deleteData(id)?.subscribe(
+      res => {
+        this.siteService.removeSite(id[0]);
+      }
+    );
+    
   }
 }
