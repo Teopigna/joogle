@@ -14,6 +14,7 @@ export class ItemDetailComponent implements OnInit {
   editMode: boolean = false;
   index?: number;
   site?: Site;
+  isEditMode: boolean = false;
 
   // Inizializza il form
   detailForm: FormGroup = new FormGroup({
@@ -32,6 +33,7 @@ export class ItemDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
+      this.isEditMode = true;
       this.index = +params['index'];
       this.site = this.siteService.getSite(this.index);
       this.initForm();
@@ -53,7 +55,19 @@ export class ItemDetailComponent implements OnInit {
   }
 
   onSubmit() {
-    //this.storageService.changeData().subscribe();
+    if (this.editMode) {
+      return;
+    } else {
+      let sito: Site = {
+        title: this.detailForm.value.title,
+        id: 10,
+        description: this.detailForm.value.description,
+        keys: this.detailForm.value.keys,
+        url: this.detailForm.value.url,
+      };
+      this.storageService.addData(sito);
+    }
+    this.router.navigate(['']);
   }
 
   onCancel() {
