@@ -4,13 +4,13 @@ import { AuthService } from './auth.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import {map, tap} from "rxjs/operators"
+import { map, tap } from 'rxjs/operators';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root',
 })
 export class DataStorageService {
-
+    
 
     constructor(private http: HttpClient, private authService: AuthService, private sitesService: SitesService){}
 
@@ -57,7 +57,7 @@ export class DataStorageService {
         }
 
         console.log(query);
-
+        
         return this.http.get(
             "http://localhost:3000/ricerca?_page=1&_limit=2&q="+query
         ).pipe(
