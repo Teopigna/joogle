@@ -1,3 +1,4 @@
+import { AuthGuard } from './auth/auth.guard';
 import { ItemStartComponent } from './item-start/item-start.component';
 import { AuthComponent } from './auth/auth.component';
 
@@ -11,8 +12,8 @@ const appRoutes: Routes = [
     {path: '', component: PageBodyComponent,
         children: [
             {path: '', component: ItemStartComponent},
-            {path: 'new', component: ItemDetailComponent},
-            {path: ':index/edit', component: ItemDetailComponent}
+            {path: 'new', component: ItemDetailComponent, canActivate:[AuthGuard]},
+            {path: 'edit', component: ItemDetailComponent, canActivate:[AuthGuard]}
         ]
     },
     {path: 'auth', component: AuthComponent},

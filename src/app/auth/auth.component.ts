@@ -22,8 +22,8 @@ export class AuthComponent implements OnInit , OnDestroy{
     if(!form.valid){
       return;
     }
-
-    const email = form.value.email;
+    
+    const email = form.value.user;
     const password = form.value.password;
 
     let authObs: Observable<AuthResponseData>;

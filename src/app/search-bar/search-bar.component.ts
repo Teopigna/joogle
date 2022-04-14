@@ -1,3 +1,5 @@
+import { DataStorageService } from './../services/data-storage.service';
+import { NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchBarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dataStorageService: DataStorageService) { }
 
   ngOnInit(): void {
   }
 
+  onSubmit(form: NgForm){
+
+    const research = form.value.search;
+
+    this.dataStorageService.search(research);
+  }
 }
