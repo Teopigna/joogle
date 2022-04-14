@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { DataStorageService } from '../services/data-storage.service';
 import { SitesService } from '../services/sites.service';
 import { Site } from '../shared/site.model';
 
@@ -24,7 +25,9 @@ export class ItemDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private siteService: SitesService
+    private router: Router,
+    private siteService: SitesService,
+    private storageService: DataStorageService
   ) {}
 
   ngOnInit(): void {
@@ -49,9 +52,11 @@ export class ItemDetailComponent implements OnInit {
     });
   }
 
-  onSubmit() {}
+  onSubmit() {
+    //this.storageService.changeData().subscribe();
+  }
 
-  //con il tasto cancel lo reindirizzo alla pagina precedente
-
-  onCancel() {}
+  onCancel() {
+    this.router.navigate(['']);
+  }
 }
