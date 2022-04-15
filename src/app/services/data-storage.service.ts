@@ -10,58 +10,67 @@ import { map, tap } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class DataStorageService {
-    
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService,
+    private sitesService: SitesService
+  ) {}
 
-    constructor(private http: HttpClient, private authService: AuthService, private sitesService: SitesService){}
+  // Richiesta al server di ricevere i siti
+  getData() {
+    return this.http.get('http://localhost:3000/ricerca?_page=1&_limit=2').pipe(
+      map((res: any) => {
+        return res.map((site: any) => {
+          return { ...site };
+        });
+      }),
+      tap((res: any) => {
+        // Setta i siti nel site Service
+        this.sitesService.setSites(res);
+      })
+    );
+  }
 
-    
-    // Richiesta al server di ricevere i siti
-    getData(){
+  search(research: string) {
+    return this.http
+      .get('http://localhost:3000/ricerca?_page=1&_limit=2&q=' + research)
+      .pipe(
+        map((res: any) => {
+          return res.map((site: any) => {
+            return { ...site };
+          });
+        }),
+        tap((res: any) => {
+          // Setta i siti nel site Service
+          this.sitesService.setSites(res);
+        })
+      )
+      .subscribe();
+  }
 
-        return this.http.get(
-            "http://localhost:3000/ricerca?_page=1&_limit=2"
-        ).pipe(
-            map((res:any) => {
-                return res.map( (site:any) => {
-                    return {...site}
-                });
-            }),
-            tap((res: any) => {
-                // Setta i siti nel site Service
-                this.sitesService.setSites(res);
-            })
-        );
+  deleteData(id: number[]) {
+    let token: string | null = this.authService.user.getValue()!.token;
+
+    if (token == null) {
+      return;
     }
 
-    search(research: string){
-        
-        return this.http.get(
-            "http://localhost:3000/ricerca?_page=1&_limit=2&q="+research
-        ).pipe(
-            map((res:any) => {
-                return res.map( (site:any) => {
-                    return {...site}
-                });
-            }),
-            tap((res: any) => {
-                // Setta i siti nel site Service
-                this.sitesService.setSites(res);
-            })
-        ).subscribe();
+    return this.http.delete(
+      'http://localhost:3000/eliminaRisultati?id=' + id[0], //per id multipli ?id=1&id=2&id=3
+      { headers: new HttpHeaders({ authorization: 'Bearer ' + token }) }
+    );
+  }
 
+  addData(data: Site) {
+    let token: string | null = this.authService.user.getValue()!.token;
+
+    if (token == null) {
+      return;
     }
-    
-    deleteData(id:number[]){
-
-        let token: string | null= this.authService.user.getValue()!.token;
-
-        if(token == null){
-            return;
-        }
-        
-        return this.http.delete(
-            "http://localhost:3000/eliminaRisultati?id="+id[0],  //per id multipli ?id=1&id=2&id=3
-            {headers: new HttpHeaders({'authorization' : "Bearer "+token})}
-        );
-    }
+    return this.http
+      .patch('http://localhost:3000/ricerca?id=10', data, {
+        headers: new HttpHeaders({ authorization: 'Bearer ' + token }),
+      })
+      .subscribe();
+  }
 }
