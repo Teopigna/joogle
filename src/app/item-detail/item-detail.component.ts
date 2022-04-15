@@ -12,9 +12,9 @@ import { Site } from '../shared/site.model';
 })
 export class ItemDetailComponent implements OnInit {
   editMode: boolean = false;
-  index?: number;
+  index: number = 0;
   site?: Site;
-  isEditMode: boolean = false;
+  
 
   // Inizializza il form
   detailForm: FormGroup = new FormGroup({
@@ -33,20 +33,18 @@ export class ItemDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
-      console.log("Getting params");
+      
       this.index = +params['index'];
-      console.log(this.index);
+      
       if(!isNaN(this.index)){
         this.editMode = true;
         this.site = this.siteService.getSite(this.index);
         this.initForm();
       }
       else{
-        console.log("Setting edit mode to false..");
+        
         this.editMode = false;
       }
-      
-      console.log(this.editMode);
       
     });
 
@@ -67,15 +65,22 @@ export class ItemDetailComponent implements OnInit {
   }
 
   onSubmit() {
-
-    console.log(this.editMode);
     
     if (this.editMode) {
-      return;
+      
+      let sitoMod: Site = {
+        title: this.detailForm.value.title,
+        id: this.site!.id,
+        description: this.detailForm.value.description,
+        keys: this.detailForm.value.keys,
+        url: this.detailForm.value.url
+      }
+      
+      this.storageService.modifieData(sitoMod, this.index);
     } else {
       let sito: Site = {
+        id: null,
         title: this.detailForm.value.title,
-        id: 10,
         description: this.detailForm.value.description,
         keys: this.detailForm.value.keys,
         url: this.detailForm.value.url,

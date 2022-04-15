@@ -54,7 +54,6 @@ export class ItemListComponent implements OnInit, OnDestroy {
 
   nextPage(){
     this.currentPage +=1;
-    console.log(this.currentPage);
     this.storageService.nextPage();
   }
 

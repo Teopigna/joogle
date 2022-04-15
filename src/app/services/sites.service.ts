@@ -16,14 +16,16 @@ export class SitesService {
   }
   
   removeSite(ind: number){
-    console.log(this.sites);
     this.sites = this.sites.splice(ind, 1);
-    console.log(this.sites);
+    this.sitesChanged.next(this.sites.slice());
+  }
+
+  addSite(data: Site){
+    this.sites.push(data);
     this.sitesChanged.next(this.sites.slice());
   }
 
   getSites() {
-    //console.log(this.sites);
     return this.sites.slice();
   }
 

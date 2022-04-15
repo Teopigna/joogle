@@ -1,6 +1,6 @@
 export interface Site {
+    id: number | null;
     title: string;
-    id: number;
     description: string;
     keys: string;
     url: string;
