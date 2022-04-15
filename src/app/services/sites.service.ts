@@ -30,4 +30,11 @@ export class SitesService {
   getSite(index: number) {
     return this.sites[index];
   }
+
+  getIndex(site: Site | undefined){
+    if(site)
+      return this.sites.indexOf(site);
+    else
+      return
+  }
 }

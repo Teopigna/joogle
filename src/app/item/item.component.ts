@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { SitesService } from './../services/sites.service';
 import { DataStorageService } from './../services/data-storage.service';
 import { Subscription } from 'rxjs';
@@ -20,7 +21,11 @@ export class ItemComponent implements OnInit, OnDestroy {
   
   @Input() index?: number;
 
-  constructor(private authService: AuthService, private dataStorageService: DataStorageService, private siteService: SitesService) { }
+  constructor(
+    private authService: AuthService, 
+    private dataStorageService: DataStorageService, 
+    private siteService: SitesService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.userSub = this.authService.user.subscribe(user => {
@@ -32,6 +37,11 @@ export class ItemComponent implements OnInit, OnDestroy {
     this.userSub?.unsubscribe()
   }
 
+  onModify(){
+    const id = this.siteService.getIndex(this.site);
+    this.router.navigate(['/edit', id]);
+  }
+
   onDelete(id: number[] ) {
     this.dataStorageService.deleteData(id)?.subscribe(
       res => {
@@ -40,4 +50,6 @@ export class ItemComponent implements OnInit, OnDestroy {
     );
     
   }
+
+  //[routerLink]="['/edit', site?.id]"
 }
