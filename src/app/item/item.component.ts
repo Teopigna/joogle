@@ -45,7 +45,7 @@ export class ItemComponent implements OnInit, OnDestroy {
   onDelete(id: number[] ) {
     this.dataStorageService.deleteData(id)?.subscribe(
       res => {
-        this.siteService.removeSite(this.index!);
+        //this.siteService.removeSite(this.index!);
       }
     );
     

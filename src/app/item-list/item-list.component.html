@@ -8,9 +8,20 @@
         </app-item>
     </div>
     <!-- <button class="btn btn-success" (click)="get()">Test get sites list</button> -->
-    <div class="row">
+</div>
+
+<div class="row" *ngIf="currentPage > 0">
+    <div class="col-xs-12">
         <h4 *ngIf="message">{{message}}</h4>
-        <button class="btn btn-success" *ngIf="currentPage > 1" (click)="previousPage()"> <- </button>
-        <button class="btn btn-success" *ngIf="currentPage > 0 && !message && !noNext" (click)="nextPage()"> -> </button>
+        <button class="btn btn-success"  [disabled]="!(currentPage>1)" (click)="previousPage()"> <- </button>
+        <button 
+            class="btn btn-success" 
+            [disabled]=" (!(currentPage>0)) || message || noNext "  
+            (click)="nextPage()"> -> 
+        </button>
     </div>
+    
+</div>
+<div class="row" *ngIf="currentPage <= 0">
+    <h4>Type your research in the search bar..</h4>
 </div>
