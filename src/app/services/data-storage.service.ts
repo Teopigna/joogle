@@ -77,7 +77,7 @@ export class DataStorageService {
             }),
             tap((res: any) => {
             // Setta i siti nel site Service
-            this.sitesService.setSites(res);
+                this.sitesService.setSites(res);
             })
         )
         .subscribe();
