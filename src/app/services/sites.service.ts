@@ -16,7 +16,7 @@ export class SitesService {
   }
   
   removeSite(ind: number){
-    this.sites = this.sites.splice(ind, 1);
+    this.sites.splice(ind, 1);
     this.sitesChanged.next(this.sites.slice());
   }
 

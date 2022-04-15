@@ -76,7 +76,7 @@ export class ItemDetailComponent implements OnInit {
         url: this.detailForm.value.url
       }
       
-      this.storageService.modifieData(sitoMod, this.index);
+      this.storageService.modifieData(sitoMod);
     } else {
       let sito: Site = {
         id: null,
