@@ -25,7 +25,7 @@ export class DataStorageService {
 
   // Richiesta al server di ricevere i siti
     getData() {
-        return this.http.get('http://localhost:3000/ricerca?_page=1&_limit=2').pipe(
+        return this.http.get('http://localhost:3000/ricerca').pipe(
         map((res: any) => {
             return res.map((site: any) => {
             return { ...site };
@@ -79,7 +79,7 @@ export class DataStorageService {
         )
         .subscribe();
     }
-    
+
     previousPage(){
         this.currentPage -=1;
         this.pageChanged.next(this.currentPage);
@@ -119,7 +119,7 @@ export class DataStorageService {
         if (token == null) {
         return;
         }
-
+        
         return this.http
         .post(
             'http://localhost:3000/ricerca', 
@@ -127,5 +127,27 @@ export class DataStorageService {
             {headers: new HttpHeaders({ authorization: 'Bearer ' + token }),
         })
         .subscribe();
+    }
+
+    modifieData(data:Site, removeIndex: number) {
+        let token: string | null = this.authService.user.getValue()!.token;
+
+        if (token == null) {
+            return;
+        }
+
+        return this.http.patch(
+            'http://localhost:3000/ricerca/'+data.id, 
+            data, 
+            {headers: new HttpHeaders({ authorization: 'Bearer ' + token }),
+        }).pipe(
+            map((res: any) => {
+                return {...res};
+            }),
+            tap((res: any) => {
+                // Setta i siti nel site Service
+                this.search(this.currentResearch);
+            })
+        ).subscribe();
     }
 }

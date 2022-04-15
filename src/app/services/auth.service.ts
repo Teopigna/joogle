@@ -24,11 +24,9 @@ export class AuthService {
             }
         ).pipe(
             map( (resData:any) => {
-                //console.log(resData);
                 return {...resData};
             }),
             tap( (resData:any) => {
-                //console.log(resData);
                 this.handleLogin(resData.access_token, +resData.tokenExpireIn, resData.refreshToken, +resData.refreshTokenExpireIn)
             })
         );
@@ -48,10 +46,7 @@ export class AuthService {
 
         const loadedUser = new User(userData.id, userData._token, +userData._tokenExpirationDate);
 
-        console.log(loadedUser);
-
         if(loadedUser.token) {
-            
             this.user.next(loadedUser);
         }
 
