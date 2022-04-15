@@ -45,11 +45,10 @@ export class ItemComponent implements OnInit, OnDestroy {
   onDelete(id: number[] ) {
     this.dataStorageService.deleteData(id)?.subscribe(
       res => {
-        this.siteService.removeSite(id[0]);
+        this.siteService.removeSite(this.index!);
       }
     );
     
   }
 
-  //[routerLink]="['/edit', site?.id]"
 }

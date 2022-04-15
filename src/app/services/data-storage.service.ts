@@ -129,7 +129,7 @@ export class DataStorageService {
         .subscribe();
     }
 
-    modifieData(data:Site, removeIndex: number) {
+    modifieData(data:Site) {
         let token: string | null = this.authService.user.getValue()!.token;
 
         if (token == null) {
