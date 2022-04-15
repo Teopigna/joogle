@@ -61,7 +61,11 @@ export class ItemListComponent implements OnInit, OnDestroy {
     this.currentPage -=1;
     this.storageService.previousPage();
   }
-
+  
+  toPage(page:number){
+    this.storageService.searchAtPage(this.storageService.currentResearch, page);
+  }
+  
   // Chiama lo storage service per ricevere i dati riguardo ai siti
   get() {
     this.storageService.getData().subscribe();

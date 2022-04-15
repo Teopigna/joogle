@@ -1,20 +1,22 @@
-<h1>Details</h1>
+<h4>Details</h4>
 
 <form [formGroup]="detailForm" (ngSubmit)="onSubmit()">
   <!-- THIS TELL ANGULAR WE MANAGE THE FORM -->
   <div class="row">
     <div class="col-xs-12">
+
       <button
         type="submit"
         class="btn btn-success"
         [disabled]="!detailForm.valid"
-        (click)="onSubmit()"
-      >
+        (click)="onSubmit()">
         Save
       </button>
+
       <button type="button" class="btn btn-danger" (click)="onCancel()">
         Cancel
       </button>
+      
     </div>
   </div>
 
@@ -67,6 +69,7 @@
           id="keys"
           formControlName="keys"
           class="form-control"
+          style="margin-bottom: 20px;"
         />
       </div>
     </div>

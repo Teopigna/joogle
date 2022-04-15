@@ -3,3 +3,7 @@ button {
     height: fit-content;
     text-align: center;
 }
+
+div.list-group-item {
+    margin-top: 40px;
+}
