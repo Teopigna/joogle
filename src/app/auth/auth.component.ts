@@ -1,3 +1,4 @@
+import { SitesService } from './../services/sites.service';
 import { AuthService } from './../services/auth.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -9,11 +10,11 @@ import { Router } from '@angular/router';
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.css']
 })
-export class AuthComponent implements OnInit , OnDestroy{
+export class AuthComponent implements OnInit {
 
   errorMessage: string | null = null;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private siteService: SitesService) { }
 
   ngOnInit(): void {
     
@@ -35,6 +36,7 @@ export class AuthComponent implements OnInit , OnDestroy{
     authObs.subscribe(
       responseData => {
         this.errorMessage = null;
+        this.siteService.setSites([]);
         this.router.navigate(['']);
       },
       error => {
@@ -44,10 +46,6 @@ export class AuthComponent implements OnInit , OnDestroy{
     );
 
     form.reset();
-  }
-
-  ngOnDestroy(): void {
-    
   }
 
 }

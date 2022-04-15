@@ -7,5 +7,10 @@
             [index]="i">
         </app-item>
     </div>
-    <button class="btn btn-success" (click)="get()">Test get sites list</button>
+    <!-- <button class="btn btn-success" (click)="get()">Test get sites list</button> -->
+    <div class="row">
+        <h4 *ngIf="message">{{message}}</h4>
+        <button class="btn btn-success" *ngIf="currentPage > 1" (click)="previousPage()"> <- </button>
+        <button class="btn btn-success" *ngIf="currentPage > 0 && !message && !noNext" (click)="nextPage()"> -> </button>
+    </div>
 </div>
