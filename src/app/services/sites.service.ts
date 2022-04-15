@@ -8,7 +8,7 @@ export class SitesService {
 
   // Subject "osservata" da item-list component
   sitesChanged = new Subject<Site[]>();
-
+  
   setSites(sites: Site[]) {
     this.sites = sites;
     // Avvisa tutti i componenti subscribed a sitesChanged che i siti sono cambiati

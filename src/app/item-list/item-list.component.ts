@@ -14,20 +14,53 @@ export class ItemListComponent implements OnInit, OnDestroy {
 
   sites: Site[] = [];
 
-  subscription?: Subscription;
+  currentPage: number = 0;
+  message: string | null = null;
+  noNext: boolean = false;
+
+  siteSubscription?: Subscription;
+  pageSubscription?: Subscription;
 
   constructor(private authService: AuthService, private storageService: DataStorageService, private sitesService: SitesService) { }
   
   ngOnInit(): void {
     
     // Avviato quando viene lanciata la NEXT su sitesChanged in sitesService
-    this.subscription = this.sitesService.sitesChanged.subscribe(
+    this.siteSubscription = this.sitesService.sitesChanged.subscribe(
       (sites: Site[]) => {
         this.sites = sites;
+        if(this.sites.length === 0){
+          this.message = "No result match your research"
+        }
+        else{
+          this.message = null;
+        }
+        if(this.sites.length < 5){
+          this.noNext = true;
+        }
+        else
+          this.noNext = false;
       }
     );
+
+    this.pageSubscription = this.storageService.pageChanged.subscribe(
+      (page:number) => {
+        this.currentPage = page;
+      }
+    )
     
     this.sites = this.sitesService.getSites();
+  }
+
+  nextPage(){
+    this.currentPage +=1;
+    console.log(this.currentPage);
+    this.storageService.nextPage();
+  }
+
+  previousPage(){
+    this.currentPage -=1;
+    this.storageService.previousPage();
   }
 
   // Chiama lo storage service per ricevere i dati riguardo ai siti
@@ -37,6 +70,6 @@ export class ItemListComponent implements OnInit, OnDestroy {
 
 
   ngOnDestroy(): void {
-    this.subscription?.unsubscribe();
+    this.siteSubscription?.unsubscribe();
   }
 }

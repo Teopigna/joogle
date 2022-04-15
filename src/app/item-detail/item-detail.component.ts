@@ -33,11 +33,23 @@ export class ItemDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
-      this.isEditMode = true;
+      console.log("Getting params");
       this.index = +params['index'];
-      this.site = this.siteService.getSite(this.index);
-      this.initForm();
+      console.log(this.index);
+      if(!isNaN(this.index)){
+        this.editMode = true;
+        this.site = this.siteService.getSite(this.index);
+        this.initForm();
+      }
+      else{
+        console.log("Setting edit mode to false..");
+        this.editMode = false;
+      }
+      
+      console.log(this.editMode);
+      
     });
+
   }
 
   initForm() {
@@ -55,6 +67,9 @@ export class ItemDetailComponent implements OnInit {
   }
 
   onSubmit() {
+
+    console.log(this.editMode);
+    
     if (this.editMode) {
       return;
     } else {
