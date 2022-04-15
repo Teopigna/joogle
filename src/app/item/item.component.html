@@ -7,7 +7,7 @@
     </div>
     <div class="col-4" *ngIf="isAdmin">
       <div class="row">
-        <button class="btn btn-success" [routerLink]="['/edit', site?.id]">
+        <button class="btn btn-success" (click)="onModify()">
           Mod
         </button>
         |

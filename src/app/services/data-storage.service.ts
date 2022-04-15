@@ -67,9 +67,12 @@ export class DataStorageService {
     if (token == null) {
       return;
     }
+
     return this.http
-      .patch('http://localhost:3000/ricerca?id=10', data, {
-        headers: new HttpHeaders({ authorization: 'Bearer ' + token }),
+      .post(
+        'http://localhost:3000/ricerca', 
+        data, 
+        {headers: new HttpHeaders({ authorization: 'Bearer ' + token }),
       })
       .subscribe();
   }
