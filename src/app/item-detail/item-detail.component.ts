@@ -16,7 +16,7 @@ export class ItemDetailComponent implements OnInit {
   site?: Site;
   
 
-  // Inizializza il form
+  // Default form, vuoto
   detailForm: FormGroup = new FormGroup({
     title: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
@@ -49,7 +49,8 @@ export class ItemDetailComponent implements OnInit {
     });
 
   }
-
+  
+  // Inizializza il form
   initForm() {
     let title = this.site?.title;
     let description = this.site?.description;

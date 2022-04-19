@@ -14,6 +14,7 @@ import { ItemStartComponent } from './item-start/item-start.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

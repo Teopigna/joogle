@@ -1,4 +1,7 @@
+import { DataStorageService } from './../services/data-storage.service';
 import { Component, OnInit } from '@angular/core';
+
+import { faFileCirclePlus, faFileArrowDown } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-item-start',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ItemStartComponent implements OnInit {
 
-  constructor() { }
+  faCreate = faFileCirclePlus;
+
+  faGet = faFileArrowDown;
+  constructor(private dataStorageService: DataStorageService) { }
 
   ngOnInit(): void {
+  }
+
+  get(){
+    this.dataStorageService.getData();
   }
 
 }

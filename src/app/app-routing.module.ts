@@ -17,6 +17,7 @@ const appRoutes: Routes = [
         ]
     },
     {path: 'auth', component: AuthComponent},
+    { path: '**', redirectTo: ''}
 ];
 
 @NgModule({

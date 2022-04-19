@@ -4,6 +4,7 @@ import { AuthService } from './../services/auth.service';
 import { Site } from './../shared/site.model';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-item-list',
@@ -11,6 +12,10 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./item-list.component.css']
 })
 export class ItemListComponent implements OnInit, OnDestroy {
+
+  //Icons
+  faArrowR = faArrowRight;
+  faArrowL = faArrowLeft;
 
   sites: Site[] = [];
 
@@ -52,27 +57,24 @@ export class ItemListComponent implements OnInit, OnDestroy {
     this.sites = this.sitesService.getSites();
   }
 
+  // Load next result's page
   nextPage(){
     this.currentPage +=1;
     this.storageService.nextPage();
   }
-
+  // Load previous result's page
   previousPage(){
     this.currentPage -=1;
     this.storageService.previousPage();
   }
-  
+  // Go to specific page
   toPage(page:number){
     this.storageService.searchAtPage(this.storageService.currentResearch, page);
   }
   
-  // Chiama lo storage service per ricevere i dati riguardo ai siti
-  get() {
-    this.storageService.getData().subscribe();
-  }
-
-
   ngOnDestroy(): void {
     this.siteSubscription?.unsubscribe();
+
+    this.pageSubscription?.unsubscribe();
   }
 }

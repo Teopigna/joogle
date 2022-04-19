@@ -23,9 +23,14 @@ export class DataStorageService {
     private sitesService: SitesService
     ) {}
 
-  // Richiesta al server di ricevere i siti
+  // Richiede al server l'intera lista di siti
     getData() {
-        return this.http.get('http://localhost:3000/ricerca').pipe(
+        this.currentResearch = '';
+        this.currentPage = 1;
+
+        this.pageChanged.next(this.currentPage);
+
+        return this.http.get('http://localhost:3000/ricerca?_page=1&_limit=5').pipe(
         map((res: any) => {
             return res.map((site: any) => {
             return { ...site };
@@ -35,10 +40,10 @@ export class DataStorageService {
             // Setta i siti nel site Service
             this.sitesService.setSites(res);
         })
-        );
+        ).subscribe();
     }
 
-    // Funzione di ricerca
+    // Funzione di ricerca 
     search(research: string) {
         this.currentResearch = research;
         this.currentPage = 1;
