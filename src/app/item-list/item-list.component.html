@@ -1,35 +1,40 @@
-
 <div class="row">
-    <div class="col-xs-12">
-        <app-item 
-            *ngFor="let item of sites; let i = index"
-            [site]="item"
-            [index]="i">
-        </app-item>
-    </div>
-    <!-- <button class="btn btn-success" (click)="get()">Test get sites list</button> -->
+  <div class="col-xs-12">
+    <app-item
+      *ngFor="let item of sites; let i = index"
+      [site]="item"
+      [index]="i"
+      class="item"
+    >
+    </app-item>
+  </div>
+  <!-- <button class="btn btn-success" (click)="get()">Test get sites list</button> -->
 </div>
 
 <!-- PAGINE -->
 <div class="row" *ngIf="currentPage > 0" style="margin-bottom: 20px">
-    <div class="col-xs-12" style="text-align: center;">
-        <h4 *ngIf="message">{{message}}</h4>
-        <button 
-            class="btn btn-success"  
-            [disabled]="!(currentPage>1)" 
-            (click)="previousPage()"> <fa-icon [icon]="faArrowL"></fa-icon> 
-        </button>
+  <div class="col-xs-12" style="text-align: center">
+    <h4 *ngIf="message">{{ message }}</h4>
+    <button
+      class="btn btn-success"
+      [disabled]="!(currentPage > 1)"
+      (click)="previousPage()"
+    >
+      <fa-icon [icon]="faArrowL"></fa-icon>
+    </button>
 
-        <button class="btn btn-default" disabled> {{currentPage}} </button>
+    <button class="btn btn-default" disabled>{{ currentPage }}</button>
 
-        <button 
-            class="btn btn-success" 
-            [disabled]=" (!(currentPage>0)) || message || noNext "  
-            (click)="nextPage()"> <fa-icon [icon]="faArrowR"></fa-icon>
-        </button>
-    </div>    
+    <button
+      class="btn btn-success"
+      [disabled]="!(currentPage > 0) || message || noNext"
+      (click)="nextPage()"
+    >
+      <fa-icon [icon]="faArrowR"></fa-icon>
+    </button>
+  </div>
 </div>
 
 <div class="row" *ngIf="currentPage <= 0">
-    <h4>Type your research in the search bar..</h4>
+  <h4>Type your research in the search bar..</h4>
 </div>

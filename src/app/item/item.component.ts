@@ -9,46 +9,42 @@ import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 @Component({
   selector: 'app-item',
   templateUrl: './item.component.html',
-  styleUrls: ['./item.component.css']
+  styleUrls: ['./item.component.css'],
 })
 export class ItemComponent implements OnInit, OnDestroy {
-
   isAdmin: boolean = false;
 
   userSub?: Subscription;
 
   @Input() site?: Site;
-  
+
   @Input() index?: number;
 
   constructor(
-    private authService: AuthService, 
-    private dataStorageService: DataStorageService, 
+    private authService: AuthService,
+    private dataStorageService: DataStorageService,
     private siteService: SitesService,
-    private router: Router) { }
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.userSub = this.authService.user.subscribe(user => {
+    this.userSub = this.authService.user.subscribe((user) => {
       this.isAdmin = !!user;
-    })
+    });
   }
 
   ngOnDestroy(): void {
-    this.userSub?.unsubscribe()
+    this.userSub?.unsubscribe();
   }
 
-  onModify(){
+  onModify() {
     const id = this.siteService.getIndex(this.site);
     this.router.navigate(['/edit', id]);
   }
 
-  onDelete(id: number[] ) {
-    this.dataStorageService.deleteData(id)?.subscribe(
-      res => {
-        //this.siteService.removeSite(this.index!);
-      }
-    );
-    
+  onDelete(id: number[]) {
+    this.dataStorageService.deleteData(id)?.subscribe((res) => {
+      //this.siteService.removeSite(this.index!);
+    });
   }
-
 }

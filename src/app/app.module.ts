@@ -13,7 +13,7 @@ import { PageBodyComponent } from './page-body/page-body.component';
 import { ItemStartComponent } from './item-start/item-start.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
@@ -26,7 +26,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AuthComponent,
     SearchBarComponent,
     PageBodyComponent,
-    ItemStartComponent
+    ItemStartComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,9 +34,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
