@@ -1,9 +1,13 @@
 div.col-6 {
     margin-top: 40px;
-    background-color: aliceblue;
+    background-color: rgb(240, 255, 242);
     height: fit-content;
 }
 
 h3 {
     margin-top: 10px;
+}
+
+div.row {
+    margin-top: 55px;
 }

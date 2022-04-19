@@ -1,4 +1,30 @@
 
-<p>Click Create to create a new page</p>
+<div class="row">
+    
+    <div class="col-3 text-center" >
+        <p>Create new page</p>
+        <button
+            style="width: max-content;" 
+            class="btn btn-success" 
+            routerLink="new">
+            <fa-icon [icon]="faCreate" size="lg"></fa-icon>
+        </button>
+    </div>
+    |
+    <div class="col-3 text-center" >
+        <p>Show all pages</p>
+        <button 
+            class="btn btn-success" 
+            (click)="get()">
+            <fa-icon [icon]="faGet" size="lg"></fa-icon>
+        </button>
+    </div>
+</div>
 
-<button class="btn btn-success" routerLink="new">Create</button>
+
+
+
+
+
+
+

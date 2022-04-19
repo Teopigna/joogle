@@ -62,7 +62,7 @@ server.post('/auth/login', (req, res) => {
   let {user, password} = req.body;
   if (isAuthenticated({user, password}) === false) {
     const status = 401;
-    const message = 'User o password non corretta';
+    const message = 'Username o password scorretti ';
     res.status(status).json({status, message});
     return;
   }
