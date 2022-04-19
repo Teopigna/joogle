@@ -5,12 +5,17 @@ import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
+import { faLock, faUser } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent implements OnInit {
+
+  faLock = faLock;
+  faPerson = faUser;
 
   errorMessage: string | null = null;
 

@@ -8,12 +8,14 @@ import { BehaviorSubject, throwError } from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
-
+    
     //Subject utile ad "avvisare" i componenti che ne hanno bisogno del login/logout effettuato
     user = new BehaviorSubject<User | null>(null);
 
     constructor(private http: HttpClient){}
 
+
+    // Gestisce la richiesta di login
     login(email: string, password: string){
         
         return this.http.post(
@@ -32,6 +34,7 @@ export class AuthService {
         );
     }
 
+    // Recupera i dati relativi all'utente dal local storage quando la pagina viene refreshata
     autoLogin() {
         const userData: {
             id : string;
@@ -52,6 +55,7 @@ export class AuthService {
 
     }
 
+    // Logout - setta la subject user a null e rimuove i dati utente dallo storage locale
     logout() {
         this.user.next(null);
         localStorage.removeItem('user');
@@ -59,7 +63,6 @@ export class AuthService {
 
     // Salva i dati dell'utente loggato in un oggetto User
     handleLogin(tk: string, tkExpire: number, refreshTk: string, refreshExpire: number){
-        
         const user = new User(
             "user",
             tk,
@@ -67,20 +70,6 @@ export class AuthService {
         );
         this.user.next(user);
         localStorage.setItem('user', JSON.stringify(user));
-    }
-
-    handleError(errorRes: HttpErrorResponse){
-        let errorMessage = 'An unknown error occurred!';
-        if(!errorRes.error || !errorRes.error.error){
-            return new Error(errorMessage);
-        }
-        switch(errorRes.error.error.message) {
-            case '401':
-                errorMessage = "Wrong user or password"
-        }
-
-        return throwError(errorMessage);
-        
     }
 
 }
