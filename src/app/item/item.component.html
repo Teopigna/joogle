@@ -1,17 +1,22 @@
 <div style="margin-bottom: 30px" class="list-group-item clearfix">
   <div class="row">
     <div class="col-8">
-      <a [href]="site?.url"
-        ><h4 class="list-group-item-heading">{{ site?.title }}</h4></a
-      >
+      <a [href]="site?.url" class="link">
+        <h4 class="list-group-item-heading" class="text">
+          {{ site?.title }}
+          <br />
+          {{ site?.url }}
+        </h4>
+      </a>
     </div>
+
     <div class="col-4" *ngIf="isAdmin">
       <div class="row">
-        <button class="btn btn-success" (click)="onModify()">
-          Mod
-        </button>
+        <button class="btn btn-success" (click)="onModify()">Mod</button>
         |
-        <button class="btn btn-danger" (click)="onDelete([site?.id??0])">Del</button>
+        <button class="btn btn-danger" (click)="onDelete([site?.id ?? 0])">
+          Del
+        </button>
       </div>
     </div>
   </div>
