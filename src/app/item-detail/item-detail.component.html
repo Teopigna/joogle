@@ -1,24 +1,29 @@
-<h4>Details</h4>
+
+
+<div class="row">
+
+  
+  <div class="col-2 d-flex align-items-center">
+    <h4 >Details</h4>
+  </div>
+  
+  <div class="col-3 d-flex align-self-center " >
+    <button
+      type="submit"
+      class="btn btn-success"
+      [disabled]="!detailForm.valid"
+      (click)="onSubmit()">
+      <fa-icon [icon]="faSave"></fa-icon>
+    </button>
+
+    <button type="button" class="btn btn-danger" (click)="onCancel()">
+      <fa-icon [icon]="faCancel"></fa-icon>
+    </button>
+    
+  </div>
+</div>
 
 <form [formGroup]="detailForm" (ngSubmit)="onSubmit()">
-  
-  <div class="row">
-    <div class="col-xs-12">
-
-      <button
-        type="submit"
-        class="btn btn-success"
-        [disabled]="!detailForm.valid"
-        (click)="onSubmit()">
-        Save
-      </button>
-
-      <button type="button" class="btn btn-danger" (click)="onCancel()">
-        Cancel
-      </button>
-      
-    </div>
-  </div>
 
   <div class="row">
     <div class="col-xs-12">
@@ -74,4 +79,6 @@
       </div>
     </div>
   </div>
+
+  
 </form>

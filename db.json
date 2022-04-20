@@ -1,29 +1,15 @@
 {
   "ricerca": [
     {
-      "id": 17,
-      "title": "test 1232",
-      "description": "312312 312 Meta Platforms, Inc.[2], nota più semplicemente come Meta, è un'impresa statunitense che controlla i servizi di rete sociale Facebook e Instagram, i servizi di messaggistica istantanea WhatsApp e Messenger e sviluppa i visori di realtà virtuale Oculus Rift, fondata nel 2004 da Mark Zuckerberg, Eduardo Saverin, Andrew McCollum, Dustin Moskovitz e Chris Hughes con il nome di Facebook, Inc.. La società ha assunto il nome attuale a partire dal 28 ottobre 2021.\n\nMeta possiede inoltre il servizio Mapillary, acquistato nel giugno 2020 dall'omonima azienda svedese, e detiene una quota del 9,99% della società telefonica",
-      "keys": "321123",
-      "url": "321312 kfejwbfkjnkjnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn"
-    },
-    {
-      "id": 18,
-      "title": "youtube",
-      "description": "Con YouTube Premium ottieni anche l'abbonamento a Music Premium. Scopri l'app adesso. Solo un abbonamento",
-      "keys": "video ",
-      "url": "https://www.youtube.com/"
-    },
-    {
       "id": 19,
-      "title": "Aubay",
+      "title": "Aubay 2",
       "description": "We are aubay. The best of the best",
       "keys": "Aubay Consulenza Informatica",
       "url": "www.aubay.it"
     },
     {
       "id": 20,
-      "title": "Angular",
+      "title": "Angular 3",
       "description": "Angular is the best",
       "keys": "angular programmazione frontend",
       "url": "https://angular.io/"
@@ -41,6 +27,13 @@
       "description": "lalalal",
       "keys": "bo bobo bobobo",
       "url": "https://bobo.com"
+    },
+    {
+      "id": 24,
+      "title": "Amazon",
+      "description": "Compra su amazon! ",
+      "keys": "shopping capitalismo",
+      "url": "https://amazon.com/"
     }
   ]
 }

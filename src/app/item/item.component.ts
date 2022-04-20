@@ -6,12 +6,19 @@ import { AuthService } from './../services/auth.service';
 import { Site } from './../shared/site.model';
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 
+import { faTrash, faGear } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-item',
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.css'],
 })
 export class ItemComponent implements OnInit, OnDestroy {
+
+  //Icons 
+  faTrash = faTrash;
+  faGear = faGear;
+
   isAdmin: boolean = false;
   selected: boolean = false;
 

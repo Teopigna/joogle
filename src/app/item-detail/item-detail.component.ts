@@ -5,12 +5,19 @@ import { DataStorageService } from '../services/data-storage.service';
 import { SitesService } from '../services/sites.service';
 import { Site } from '../shared/site.model';
 
+import { faSave, faCancel } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-item-detail',
   templateUrl: './item-detail.component.html',
   styleUrls: ['./item-detail.component.css'],
 })
 export class ItemDetailComponent implements OnInit {
+  
+  //Icons 
+  faSave = faSave;
+  faCancel = faCancel;
+
   editMode: boolean = false;
   index: number = 0;
   site?: Site;
