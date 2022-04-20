@@ -2,10 +2,11 @@
   <div class="row">
     <div class="col-8">
       <a [href]="site?.url" class="link">
+        <p class="font-weight-light text">
+          {{ site?.url }}
+        </p>
         <h4 class="list-group-item-heading" class="text">
           {{ site?.title }}
-          <br />
-          {{ site?.url }}
         </h4>
       </a>
     </div>
@@ -21,7 +22,9 @@
     </div>
   </div>
   <hr />
-  <div class="row">
-    <p class="list-group-item-text">{{ site?.description }}</p>
+  <div class="row" class="description">
+    <p class="list-group-item-text">
+      {{ site?.description }}
+    </p>
   </div>
 </div>

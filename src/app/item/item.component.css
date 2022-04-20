@@ -16,5 +16,18 @@ div.list-group-item {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 200px;
+  line-height: normal;
+}
+
+.description {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+p {
+  font-size: small;
+  color: black;
+  margin-bottom: 6px;
 }

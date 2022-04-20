@@ -13,6 +13,7 @@ import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 })
 export class ItemComponent implements OnInit, OnDestroy {
   isAdmin: boolean = false;
+  selected: boolean = false;
 
   userSub?: Subscription;
 
@@ -38,6 +39,7 @@ export class ItemComponent implements OnInit, OnDestroy {
   }
 
   onModify() {
+    this.selected = true;
     const id = this.siteService.getIndex(this.site);
     this.router.navigate(['/edit', id]);
   }
