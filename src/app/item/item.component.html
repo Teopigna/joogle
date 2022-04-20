@@ -13,10 +13,10 @@
 
     <div class="col-4" *ngIf="isAdmin">
       <div class="row">
-        <button class="btn btn-success" (click)="onModify()">Mod</button>
+        <button class="btn btn-success" (click)="onModify()"> <fa-icon [icon]="faGear"></fa-icon> </button>
         |
         <button class="btn btn-danger" (click)="onDelete([site?.id ?? 0])">
-          Del
+          <fa-icon [icon]="faTrash"></fa-icon>
         </button>
       </div>
     </div>

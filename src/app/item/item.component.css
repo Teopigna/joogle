@@ -31,3 +31,7 @@ p {
   color: black;
   margin-bottom: 6px;
 }
+
+h4:hover {
+  text-decoration: underline;
+}
