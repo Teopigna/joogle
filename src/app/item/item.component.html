@@ -1,7 +1,10 @@
 <div
-  *ngIf="!this.selected"
   style="margin-bottom: 30px"
   class="list-group-item clearfix"
+  [ngStyle]="{
+    'border-color': this.selected ? '#1987548b' : 'rgb(206, 206, 206)',
+    'border-width': this.selected ? '4px' : '2px'
+  }"
 >
   <div class="row">
     <div class="col-8">
@@ -35,13 +38,9 @@
   </div>
 </div>
 
-<div
+<!-- <div
   *ngIf="this.selected"
-  style="
-    margin-bottom: 30px;
-    border-color: rgb(115, 178, 220);
-    border-width: 3px;
-  "
+  style="margin-bottom: 30px; border-color: #1987548b; border-width: 3px"
   class="list-group-item clearfix"
 >
   <div class="row">
@@ -58,11 +57,19 @@
 
     <div class="col-4" *ngIf="isAdmin">
       <div class="row">
-        <button class="btn btn-success" (click)="onModify()">
+        <button
+          class="btn btn-success"
+          style="margin: 6px"
+          (click)="onModify()"
+        >
           <fa-icon [icon]="faGear"></fa-icon>
         </button>
-        |
-        <button class="btn btn-danger" (click)="onDelete([site?.id ?? 0])">
+
+        <button
+          class="btn btn-danger"
+          style="margin: 6px"
+          (click)="onDelete([site?.id ?? 0])"
+        >
           <fa-icon [icon]="faTrash"></fa-icon>
         </button>
       </div>
@@ -74,4 +81,4 @@
       {{ site?.description }}
     </p>
   </div>
-</div>
+</div> -->

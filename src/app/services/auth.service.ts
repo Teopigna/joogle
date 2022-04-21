@@ -12,6 +12,8 @@ export class AuthService {
     //Subject utile ad "avvisare" i componenti che ne hanno bisogno del login/logout effettuato
     user = new BehaviorSubject<User | null>(null);
 
+    private tkExpirationTimer: any;
+
     constructor(private http: HttpClient){}
 
 
@@ -51,6 +53,8 @@ export class AuthService {
 
         if(loadedUser.token) {
             this.user.next(loadedUser);
+            const expDuration = +userData._tokenExpirationDate - new Date().getTime();
+            this.autoLogout(expDuration);
         }
 
     }
@@ -59,16 +63,32 @@ export class AuthService {
     logout() {
         this.user.next(null);
         localStorage.removeItem('user');
+        if(this.tkExpirationTimer){
+            clearTimeout(this.tkExpirationTimer);
+        }
+    }
+
+    // Automatically logout after expirationTime (in seconds)
+    autoLogout(expirationTime: number) {
+        this.tkExpirationTimer = setTimeout(() => {
+            this.logout();
+        }, expirationTime*1000 );
     }
 
     // Salva i dati dell'utente loggato in un oggetto User
     handleLogin(tk: string, tkExpire: number, refreshTk: string, refreshExpire: number){
+
+        const expi = tkExpire - ((new Date()).getTime());
+
         const user = new User(
             "user",
             tk,
-            tkExpire
+            expi
         );
+        
         this.user.next(user);
+
+        this.autoLogout(expi);
         localStorage.setItem('user', JSON.stringify(user));
     }
 
