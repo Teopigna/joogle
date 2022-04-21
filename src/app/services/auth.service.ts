@@ -55,6 +55,7 @@ export class AuthService {
             this.user.next(loadedUser);
             const expDuration = +userData._tokenExpirationDate - new Date().getTime();
             this.autoLogout(expDuration);
+
         }
 
     }
@@ -79,7 +80,7 @@ export class AuthService {
     handleLogin(tk: string, tkExpire: number, refreshTk: string, refreshExpire: number){
 
         const expi = tkExpire - ((new Date()).getTime());
-
+        
         const user = new User(
             "user",
             tk,
