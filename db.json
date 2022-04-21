@@ -48,6 +48,76 @@
       "description": "Milioni di prodotti nuovi da venditori professionali per il tuo shopping online. Compra e vendi elettronica, scarpe, borse, abbigliamento, arredamento e tanto altro!",
       "keys": "shopping online spesa compra ",
       "url": "https://www.ebay.it/"
+    },
+    {
+      "id": 29,
+      "title": "Twitter",
+      "description": "From breaking news and entertainment to sports and politics, get the full story with all the live commentary.\n",
+      "keys": "social network tweet tweettare",
+      "url": "https://twitter.com/?lang=en"
+    },
+    {
+      "id": 30,
+      "title": "Internazionale - Notizie dall'Italia e dal mondo",
+      "description": "Notizie, commenti, articoli, reportage, foto e video da tutto il mondo scelti dalla redazione di Internazionale.\n",
+      "keys": "notizie news giornale attualità",
+      "url": "https://www.internazionale.it/"
+    },
+    {
+      "id": 31,
+      "title": "la Repubblica",
+      "description": "la Repubblica è il quotidiano online aggiornato 24 ore su 24 su politica, cronaca, economia, sport, esteri, spettacoli, musica, cultura, scienza ed altro.\n",
+      "keys": "giornale news notizie ",
+      "url": "https://www.repubblica.it/"
+    },
+    {
+      "id": 32,
+      "title": "la Gazzetta dello Sport",
+      "description": "Leggi su gazzetta.it le ultime news sportive live, scopri i risultati in diretta e video di calcio, basket, F1, MotoGP, ciclismo, tennis e molto altro.",
+      "keys": "sport news notizie giornale",
+      "url": "https://www.gazzetta.it/"
+    },
+    {
+      "id": 33,
+      "title": "Ricette GialloZafferano",
+      "description": "Vuoi cucinare? Scopri consigli, ingredienti, tempi e modalità di preparazione delle nostre gustosissime ricette.",
+      "keys": "ricette cucina cibo mangiare",
+      "url": "https://www.giallozafferano.it/ricette-cat/"
+    },
+    {
+      "id": 34,
+      "title": "YouTube",
+      "description": "Enjoy the videos and music you love, upload original content, and share it all with friends, family, and the world on YouTube.",
+      "keys": "video online reels",
+      "url": "https://www.youtube.com/"
+    },
+    {
+      "id": 35,
+      "title": "Vimeo",
+      "description": "All the Tools You Need to Upload, Host, and Share Video. Learn More. Unlimited bandwidth. 8K 360 uploads. Live streaming. Privacy controls. Customizable player. Video review tools.",
+      "keys": "video visualizza",
+      "url": "https://vimeo.com/upgrade?vcid=33526&utm_medium=cpc&utm_source=google&&ds_lpt_start&ds_lpt_end&utm_medium=cpc&utm_source=GOOGLE&utm_content=Core_Search_INTL_AOB_Google_Brand_Alone_Alpha*Vimeo+-+Exact&utm_term=vimeo&utm_campaign=1923&gclid=Cj0KCQjwgYSTBhDKARIsAB8Kuku5hcOFGnEDhc6Fvr28JgUPi4_5JloOjzkDAVsUD5u3S8TaBVRFhFQaArcdEALw_wcB&gclsrc=aw.ds"
+    },
+    {
+      "id": 36,
+      "title": "TypeScript",
+      "description": "TypeScript is a programming language developed and maintained by Microsoft. It is a strict syntactical superset of JavaScript and adds optional static typing to the language. It is designed for the development of large applications and transpiles to JavaScript.",
+      "keys": "programmazione scripting java",
+      "url": "https://www.typescriptlang.org/"
+    },
+    {
+      "id": 37,
+      "title": "Twitch",
+      "description": "Twitch is an interactive livestreaming service for content spanning gaming, entertainment, sports, music, and more. ",
+      "keys": "intrattenimento video streaming live",
+      "url": "https://www.twitch.tv/"
+    },
+    {
+      "id": 38,
+      "title": "Treedom",
+      "description": "Choose your tree, a farmer will plant it on his land and take care of it on your behalf. A greener planet is a better planet. Let's do it together, plant a tree now.",
+      "keys": "environment earth plants tree trees",
+      "url": "https://www.treedom.net/en/"
     }
   ]
 }
