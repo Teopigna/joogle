@@ -1,39 +1,46 @@
 {
   "ricerca": [
     {
-      "id": 18,
-      "title": "youtube",
-      "description": "Con YouTube Premium ottieni anche l'abbonamento a Music Premium. Scopri l'app adesso. Solo un abbonamento",
-      "keys": "video ",
-      "url": "https://www.youtube.com/"
-    },
-    {
       "id": 19,
       "title": "Aubay",
-      "description": "We are aubay. The best of the best",
-      "keys": "Aubay Consulenza Informatica",
-      "url": "www.aubay.it"
+      "description": "L’innovazione è l’elemento chiave della client experience poiché contribuisce a rispondere alle esigenze di velocità e semplicità e alla fornitura di servizi distintivi e personalizzati. La trasformazione digitale insieme all’abilità a tenere il passo con l’innovazione stanno impegnando le organizzazioni in tutti gli ambiti di mercato, in particolare nel settore bancario e assicurativo. La telefonia mobile è la forza trainante della digitalizzazione e una delle principali leve del processo di trasformazione digitale. Aubay offre la sua esperienza in questo campo, con la forza aggiunta della suoi esperti e centri di competenza.",
+      "keys": "Consulenza Informatica Lavoro Innovazione",
+      "url": "https://www.aubay.it/"
     },
     {
       "id": 20,
-      "title": "Angular",
-      "description": "Angular is the best",
-      "keys": "angular programmazione frontend",
+      "title": "Angular 2",
+      "description": "Angular is an application design framework and development platform for creating efficient and sophisticated single-page apps.",
+      "keys": "angular programmazione frontend ",
       "url": "https://angular.io/"
     },
     {
       "id": 21,
-      "title": "FontAwesome",
-      "description": "Awesome fonts fot u",
-      "keys": "font fonts awesome",
-      "url": "https://fontawesome.com/search?q=download&m=free&s=solid%2Cbrands"
+      "title": "Font Awesome",
+      "description": "Font Awesome is the Internet's icon library and toolkit, used by millions of designers, developers, and content creators.",
+      "keys": "font fonts awesome icone icon icons",
+      "url": "https://fontawesome.com/"
     },
     {
-      "id": 22,
-      "title": "facebook",
-      "description": "lalalal",
-      "keys": "bo bobo bobobo",
-      "url": "https://facebook.com"
+      "id": 25,
+      "title": "Facebook",
+      "description": "Create an account or log into Facebook. Connect with friends, family and other people you know. Share photos and videos, send messages and get updates.",
+      "keys": "social network fb ",
+      "url": "https://www.facebook.com/"
+    },
+    {
+      "id": 26,
+      "title": "Instagram ",
+      "description": "Create an account or log in to Instagram - A simple, fun & creative way to capture, edit & share photos, videos & messages with friends & family.",
+      "keys": "insta social network image images",
+      "url": "https://www.instagram.com/?hl=en"
+    },
+    {
+      "id": 27,
+      "title": "GitHub ",
+      "description": "GitHub is where over 73 million developers shape the future of software, together. Contribute to the open source community, manage your Git repositories & much more.",
+      "keys": "git hub programming development ",
+      "url": "https://github.com/"
     }
   ]
 }

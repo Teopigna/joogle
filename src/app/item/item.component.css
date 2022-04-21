@@ -2,6 +2,7 @@ button {
   width: fit-content;
   height: fit-content;
   text-align: center;
+  margin: 7px;
 }
 
 div.list-group-item {

@@ -23,7 +23,7 @@ export class DataStorageService {
     private sitesService: SitesService
     ) {}
 
-  // Richiede al server l'intera lista di siti
+    // Richiede al server l'intera lista di siti
     getData() {
         this.currentResearch = '';
         this.currentPage = 1;
@@ -67,7 +67,7 @@ export class DataStorageService {
     }
 
      // Funzione di ricerca
-     searchAtPage(research: string, page: number) {
+    searchAtPage(research: string, page: number) {
         this.currentResearch = research;
 
         this.pageChanged.next(page);
