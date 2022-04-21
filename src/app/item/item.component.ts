@@ -1,7 +1,11 @@
-import { NavigationEnd, Router } from '@angular/router';
+import {
+  NavigationEnd,
+  Router,
+  Event as NavigationEvent,
+} from '@angular/router';
 import { SitesService } from './../services/sites.service';
 import { DataStorageService } from './../services/data-storage.service';
-import { filter, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { AuthService } from './../services/auth.service';
 import { Site } from './../shared/site.model';
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
@@ -14,15 +18,16 @@ import { faTrash, faGear } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./item.component.css'],
 })
 export class ItemComponent implements OnInit, OnDestroy {
-
-  //Icons 
+  //Icons
   faTrash = faTrash;
   faGear = faGear;
 
   isAdmin: boolean = false;
   selected: boolean = false;
+  currentUrl: string = '';
 
   userSub?: Subscription;
+  urlSubscribe?: Subscription;
 
   @Input() site?: Site;
 
@@ -39,23 +44,32 @@ export class ItemComponent implements OnInit, OnDestroy {
     this.userSub = this.authService.user.subscribe((user) => {
       this.isAdmin = !!user;
     });
-
-    
+    this.urlSubscribe = this.router.events.subscribe(
+      (event: NavigationEvent) => {
+        if (event instanceof NavigationEnd) {
+          this.currentUrl = event.url;
+          if (this.currentUrl.includes('/edit/' + String(this.index))) {
+            this.selected = true;
+          } else {
+            this.selected = false;
+          }
+        }
+      }
+    );
   }
 
   ngOnDestroy(): void {
     this.userSub?.unsubscribe();
+    this.urlSubscribe?.unsubscribe();
   }
 
   onModify() {
-    this.selected = true;
     const id = this.siteService.getIndex(this.site);
     this.router.navigate(['/edit', id]);
+    console.log('ngoonModify' + this.currentUrl);
   }
 
   onDelete(id: number[]) {
-    this.dataStorageService.deleteData(id)?.subscribe((res) => {
-      //this.siteService.removeSite(this.index!);
-    });
+    this.dataStorageService.deleteData(id)?.subscribe((res) => {});
   }
 }
