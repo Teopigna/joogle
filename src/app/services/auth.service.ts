@@ -87,9 +87,9 @@ export class AuthService {
         );
         
         this.user.next(user);
-
-        this.autoLogout(expi);
+        
         localStorage.setItem('user', JSON.stringify(user));
+        this.autoLogout(expi);
     }
 
 }
