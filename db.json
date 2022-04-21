@@ -3,7 +3,7 @@
     {
       "id": 19,
       "title": "Aubay",
-      "description": "We are aubay. The best of the best",
+      "description": "We are aubay",
       "keys": "Aubay Consulenza Informatica",
       "url": "www.aubay.it"
     },
@@ -27,6 +27,20 @@
       "description": "Compra su amazon! ",
       "keys": "shopping capitalismo",
       "url": "https://amazon.com/"
+    },
+    {
+      "id": 25,
+      "title": "Facebook",
+      "description": "Facebook is blue.",
+      "keys": "social network fb ",
+      "url": "https://www.facebook.com/"
+    },
+    {
+      "id": 26,
+      "title": "Instagram",
+      "description": "Instagram is part of facebook.",
+      "keys": "insta social network image images",
+      "url": "https://www.instagram.com/?hl=en"
     }
   ]
 }
