@@ -2,14 +2,14 @@
   "ricerca": [
     {
       "id": 19,
-      "title": "Aubay 2",
+      "title": "Aubay",
       "description": "We are aubay. The best of the best",
       "keys": "Aubay Consulenza Informatica",
       "url": "www.aubay.it"
     },
     {
       "id": 20,
-      "title": "Angular 3",
+      "title": "Angular",
       "description": "Angular is the best",
       "keys": "angular programmazione frontend",
       "url": "https://angular.io/"
@@ -20,13 +20,6 @@
       "description": "Awesome fonts fot u",
       "keys": "font fonts awesome",
       "url": "https://fontawesome.com/search?q=download&m=free&s=solid%2Cbrands"
-    },
-    {
-      "id": 22,
-      "title": "BOBO",
-      "description": "lalalal",
-      "keys": "bo bobo bobobo",
-      "url": "https://bobo.com"
     },
     {
       "id": 24,

@@ -1,7 +1,7 @@
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { SitesService } from './../services/sites.service';
 import { DataStorageService } from './../services/data-storage.service';
-import { Subscription } from 'rxjs';
+import { filter, Subscription } from 'rxjs';
 import { AuthService } from './../services/auth.service';
 import { Site } from './../shared/site.model';
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
@@ -39,6 +39,8 @@ export class ItemComponent implements OnInit, OnDestroy {
     this.userSub = this.authService.user.subscribe((user) => {
       this.isAdmin = !!user;
     });
+
+    
   }
 
   ngOnDestroy(): void {
