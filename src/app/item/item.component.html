@@ -1,4 +1,8 @@
-<div style="margin-bottom: 30px" class="list-group-item clearfix">
+<div
+  *ngIf="!this.selected"
+  style="margin-bottom: 30px"
+  class="list-group-item clearfix"
+>
   <div class="row">
     <div class="col-8">
       <a [href]="site?.url" class="link">
@@ -13,7 +17,50 @@
 
     <div class="col-4" *ngIf="isAdmin">
       <div class="row">
-        <button class="btn btn-success" (click)="onModify()"> <fa-icon [icon]="faGear"></fa-icon> </button>
+        <button class="btn btn-success" (click)="onModify()">
+          <fa-icon [icon]="faGear"></fa-icon>
+        </button>
+        |
+        <button class="btn btn-danger" (click)="onDelete([site?.id ?? 0])">
+          <fa-icon [icon]="faTrash"></fa-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+  <hr />
+  <div class="row" class="description">
+    <p class="list-group-item-text">
+      {{ site?.description }}
+    </p>
+  </div>
+</div>
+
+<div
+  *ngIf="this.selected"
+  style="
+    margin-bottom: 30px;
+    border-color: rgb(115, 178, 220);
+    border-width: 3px;
+  "
+  class="list-group-item clearfix"
+>
+  <div class="row">
+    <div class="col-8">
+      <a [href]="site?.url" class="link">
+        <p class="font-weight-light text">
+          {{ site?.url }}
+        </p>
+        <h4 class="list-group-item-heading" class="text">
+          {{ site?.title }}
+        </h4>
+      </a>
+    </div>
+
+    <div class="col-4" *ngIf="isAdmin">
+      <div class="row">
+        <button class="btn btn-success" (click)="onModify()">
+          <fa-icon [icon]="faGear"></fa-icon>
+        </button>
         |
         <button class="btn btn-danger" (click)="onDelete([site?.id ?? 0])">
           <fa-icon [icon]="faTrash"></fa-icon>
