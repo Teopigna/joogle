@@ -9,7 +9,7 @@
     },
     {
       "id": 20,
-      "title": "Angular 2",
+      "title": "Angular",
       "description": "Angular is an application design framework and development platform for creating efficient and sophisticated single-page apps.",
       "keys": "angular programmazione frontend ",
       "url": "https://angular.io/"
@@ -41,6 +41,13 @@
       "description": "GitHub is where over 73 million developers shape the future of software, together. Contribute to the open source community, manage your Git repositories & much more.",
       "keys": "git hub programming development ",
       "url": "https://github.com/"
+    },
+    {
+      "id": 28,
+      "title": "eBay",
+      "description": "Milioni di prodotti nuovi da venditori professionali per il tuo shopping online. Compra e vendi elettronica, scarpe, borse, abbigliamento, arredamento e tanto altro!",
+      "keys": "shopping online spesa compra ",
+      "url": "https://www.ebay.it/"
     }
   ]
 }

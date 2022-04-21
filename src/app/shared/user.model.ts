@@ -2,7 +2,7 @@ export class User {
     constructor(
         public id: string, 
         private _token: string, 
-        private _tokenExpirationDate : number
+        public _tokenExpirationDate : number
     ) {}
         
     get token(){  //user.token == similar to property

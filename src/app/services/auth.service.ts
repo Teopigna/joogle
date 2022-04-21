@@ -53,9 +53,8 @@ export class AuthService {
 
         if(loadedUser.token) {
             this.user.next(loadedUser);
-            const expDuration = +userData._tokenExpirationDate - new Date().getTime();
-            this.autoLogout(expDuration);
-
+            const expi = loadedUser._tokenExpirationDate - ((new Date()).getTime());
+            this.autoLogout(expi);
         }
 
     }
@@ -67,29 +66,30 @@ export class AuthService {
         if(this.tkExpirationTimer){
             clearTimeout(this.tkExpirationTimer);
         }
+        this.tkExpirationTimer = null;
     }
 
-    // Automatically logout after expirationTime (in seconds)
+    // Automatically logout after expirationTime (in mseconds)
     autoLogout(expirationTime: number) {
         this.tkExpirationTimer = setTimeout(() => {
             this.logout();
-        }, expirationTime*1000 );
+        }, expirationTime );
     }
 
     // Salva i dati dell'utente loggato in un oggetto User
     handleLogin(tk: string, tkExpire: number, refreshTk: string, refreshExpire: number){
-
         const expi = tkExpire - ((new Date()).getTime());
-        
+
         const user = new User(
             "user",
             tk,
-            expi
+            tkExpire
         );
         
         this.user.next(user);
         
         localStorage.setItem('user', JSON.stringify(user));
+
         this.autoLogout(expi);
     }
 
